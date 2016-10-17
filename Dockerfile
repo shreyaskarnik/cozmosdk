@@ -21,9 +21,6 @@ pillow \
 tweepy \
 flask
 
-COPY tools /opt/tools
-ENV PATH ${PATH}:/opt/tools
-
 RUN cd /opt && wget --output-document=android-sdk.tgz --quiet http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-linux.tgz && \
   tar xzf android-sdk.tgz && \
   rm -f android-sdk.tgz && \
