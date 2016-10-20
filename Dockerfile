@@ -4,8 +4,8 @@ MAINTAINER Shreyas Karnik <karnik.shreyas@gmail.com>
 
 ENV ANDROID_SDK_VERSION r24.3.3
 
-RUN apt-get update && apt-get -y upgrade \
-apt-get install -y -q default-jdk \
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get install -y -q default-jdk \
 default-jre \
 curl \
 sudo \
@@ -24,7 +24,6 @@ pillow \
 tweepy \
 flask
 
-
 RUN cd /opt && wget --output-document=android-sdk.tgz --quiet http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-linux.tgz && \
   tar xzf android-sdk.tgz && \
   rm -f android-sdk.tgz && \
@@ -38,3 +37,4 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 RUN pip install cozmo[camera]
+RUN apt-get clean
